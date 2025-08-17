@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+project.group = 'moody.andy'
+project.version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    testImplementation libs.junit.jupiter
+    testImplementation libs.hamcrest
+}
+
+test {
+    useJUnitPlatform()
+}
