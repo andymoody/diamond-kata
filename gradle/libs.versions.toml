@@ -1,6 +1,7 @@
 [versions]
 
 junit = "5.13.4"
+junit-platform = "1.13.4"
 hamcrest = "3.0"
 commons-io = "2.20.0"
 commons-lang = "3.18.0"
@@ -8,6 +9,7 @@ commons-lang = "3.18.0"
 [libraries]
 
 junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junit" }
+junit-jupiter-launcher = { group = "org.junit.platform", name = "junit-platform-launcher", version.ref = "junit-platform" }
 hamcrest = { group = "org.hamcrest", name = "hamcrest", version.ref = "hamcrest" }
 commons-io = {group = "commons-io", name="commons-io", version.ref = "commons-io" }
 commons-lang = { group = "org.apache.commons", name = "commons-lang3", version.ref = "commons-lang" }

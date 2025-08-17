@@ -18,6 +18,7 @@ dependencies {
     testImplementation libs.junit.jupiter
     testImplementation libs.hamcrest
     testImplementation libs.commons.io
+    testRuntimeOnly libs.junit.jupiter.launcher
 }
 
 test {
