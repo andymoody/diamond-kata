@@ -25,7 +25,7 @@ class DiamondPrinterTest {
     }
 
     @ParameterizedTest
-    @ValueSource(chars = {'A', 'B'})
+    @ValueSource(chars = {'A', 'B', 'C', 'Z'})
     void shouldPrintSingleCharacterDiamondForA(char validChar) throws InvalidCharacterException, IOException {
         underTest.printDiamond(validChar, writer);
         assertThat(writer.toString(), equalTo(readFileFromClasspath(String.format("examples/%s.txt", validChar))));
