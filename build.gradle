@@ -14,8 +14,10 @@ test {
 }
 
 dependencies {
+    implementation libs.commons.lang
     testImplementation libs.junit.jupiter
     testImplementation libs.hamcrest
+    testImplementation libs.commons.io
 }
 
 test {

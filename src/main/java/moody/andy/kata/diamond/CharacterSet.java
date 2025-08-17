@@ -8,13 +8,26 @@ public interface CharacterSet {
 
         @Override
         public int getIndex(char character) throws InvalidCharacterException {
-            if (character < UPPERCASE_A || character > UPPERCASE_Z) {
+            if(character < UPPERCASE_A || character > UPPERCASE_Z) {
                 throw new InvalidCharacterException("Invalid character: " + character);
             }
             return character;
+        }
+
+        @Override
+        public int getStartingIndex() {
+            return UPPERCASE_A;
+        }
+
+        @Override
+        public char getCharacterForIndex(int index) {
+            return (char) index;
         }
     };
 
     int getIndex(char character) throws InvalidCharacterException;
 
+    int getStartingIndex();
+
+    char getCharacterForIndex(int i);
 }

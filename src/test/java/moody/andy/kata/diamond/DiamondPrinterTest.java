@@ -1,12 +1,14 @@
 package moody.andy.kata.diamond;
 
-import org.junit.jupiter.api.Test;
+import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -22,9 +24,14 @@ class DiamondPrinterTest {
         assertThrows(InvalidCharacterException.class, () -> underTest.printDiamond(invalidChar, writer));
     }
 
-    @Test
-    void shouldPrintSingleCharacterDiamondForA() throws InvalidCharacterException, IOException {
-        underTest.printDiamond('A', writer);
-        assertThat(writer.toString(), equalTo("A"));
+    @ParameterizedTest
+    @ValueSource(chars = {'A', 'B'})
+    void shouldPrintSingleCharacterDiamondForA(char validChar) throws InvalidCharacterException, IOException {
+        underTest.printDiamond(validChar, writer);
+        assertThat(writer.toString(), equalTo(readFileFromClasspath(String.format("examples/%s.txt", validChar))));
+    }
+
+    private static String readFileFromClasspath(String filePath) throws IOException {
+        return IOUtils.toString(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResourceAsStream(filePath)), StandardCharsets.UTF_8);
     }
 }
