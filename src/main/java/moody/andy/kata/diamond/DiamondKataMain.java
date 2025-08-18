@@ -8,15 +8,21 @@ import java.io.PrintWriter;
 
 public class DiamondKataMain {
 
-    public static void main(String[] args) throws InvalidCharacterException, IOException {
+    public static void main(String[] args) throws IOException {
         if(ArrayUtils.isEmpty(args) || StringUtils.isBlank(args[0])) {
-            System.err.println("Please run with a single uppercase character as argument 1");
-            System.exit(1);
+            exitWithError();
         }
         try (PrintWriter printWriter = new PrintWriter(System.out)) {
             new DiamondPrinter(CharacterSet.UPPERCASE_CHARS).printDiamond(args[0].charAt(0), printWriter);
             printWriter.flush();
+        } catch (InvalidCharacterException e) {
+            exitWithError();
         }
+    }
+
+    private static void exitWithError() {
+        System.err.println("Please run with a single uppercase letter as the first argument");
+        System.exit(1);
     }
 
 }
